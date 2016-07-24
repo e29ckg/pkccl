@@ -147,8 +147,8 @@ class BackendController extends controller {
     public function actionNewsdelete($id) {
         $news = News::findOne($id);
 
-        if (file_exists('uploads/' . $news->photo) && ($news->photo)) {
-            unlink('uploads/' . $news->photo);
+        if (file_exists('uploads/news/' . $news->photo) && ($news->photo)) {
+            unlink('uploads/news/' . $news->photo);
         }
 
         if ($news->delete()) {
@@ -179,8 +179,8 @@ class BackendController extends controller {
 
             if (!empty($news->imageFile)) {
                 
-                if (file_exists('uploads/' . $news->photo) && ($news->photo)) {
-                    unlink('uploads/' . $news->photo);
+                if (file_exists('uploads/news/' . $news->photo) && ($news->photo)) {
+                    unlink('uploads/news/' . $news->photo);
                 }
                 $bName = md5($news->imageFile->baseName . time()) . '.' . $news->imageFile->extension;
 

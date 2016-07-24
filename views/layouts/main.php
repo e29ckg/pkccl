@@ -37,10 +37,10 @@ $session = new Session();
 
             $items = [];
 
-            if (!empty($session['user'])) {
-                $user = $session['user'];
+           // if (!empty($session['user'])) {
+            //    $user = $session['user'];
 
-                if ($user->level == 'admin') {
+           //     if ($user->level == 'admin') {
                     $items = [
                         ['label' => 'User', 'url' => ['/backend/user']],
                         ['label' => 'Produck','url' => ['/backend/product']],
@@ -52,18 +52,18 @@ $session = new Session();
                             ]
                         ]
                     ];
-                }
-                if ($user->level == 'manager') {
-                    $items = [
-                        ['label' => 'Report'],
-                        ['label' => 'Logout', 'url' => ['/backend/logout'],
-                            'options' => [
-                                'onclick' => 'return confirm("logout")'
-                            ]
-                        ]
-                    ];
-                }
-            }
+            //    }
+//                if ($user->level == 'manager') {
+//                    $items = [
+//                        ['label' => 'Report'],
+//                        ['label' => 'Logout', 'url' => ['/backend/logout'],
+//                            'options' => [
+//                                'onclick' => 'return confirm("logout")'
+//                            ]
+//                        ]
+//                    ];
+//                }
+            //}
 
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],

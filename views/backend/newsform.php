@@ -9,20 +9,27 @@ use dosamigos\ckeditor\CKEditor;
     <div class="panel-body">
         <?php
         $f = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
-        echo $f->field( $news, 'h_news');
+        echo $f->field($news, 'h_news');
         echo $f->field($news, 'detail')->widget(CKEditor::className(), [
             'options' => ['rows' => 6],
-            //'preset' => 'basic'
+                //'preset' => 'basic'
         ]);
-        echo $f->field($news, 'photo')->fileInput();
         ?>
+        <img class="img-responsive" src="<?php if (empty($news->photo)) {
+            echo $news->getImagenull();
+        } else {
+            echo $news->getImage();
+        } ?>"  height="100" width="100">
+<?php
+echo $f->field($news, 'photo')->fileInput();
+?>
 
         <button class="btn btn-success">
             <span class="glyphicon glyphicon-ok"></span>
             บันทักข้อมูล
         </button> 
 
-        <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
     </div>
 </div>

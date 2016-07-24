@@ -11,6 +11,7 @@ class News extends \yii\db\ActiveRecord {
      * @inheritdoc
      */
     public $imageFile; //field of image
+    public $newsImageFolder = 'uploads/news'; //ที่เก็บรูปภาพ 
     public $Bname;
 
     public static function tableName() {
@@ -43,10 +44,16 @@ class News extends \yii\db\ActiveRecord {
     public function upload($bName) {
         if ($this->validate()) {           
                        
-            $this->imageFile->saveAs("uploads/$bName");
+            $this->imageFile->saveAs($newsImageFolder."/$bName");
             return TRUE;
         } else {
             return FALSE;
         }
+    }
+    public function getImage() {
+        return Yii::getAlias('@web') . $newsImageFolder.'/' . $this->photo;
+    }
+    public function getImagenull() {
+        return Yii::getAlias('@web') . $newsImageFolder.'/' . 'nopic.png';
     }
 }   
